@@ -43,6 +43,7 @@ class AuthController extends Controller
      */
     public function login()
     {
+        
         // No need to show a login form if the user
         // is already logged in.
         if ($this->auth->check()) {
@@ -94,6 +95,7 @@ class AuthController extends Controller
         }
 
         $redirectURL = session('redirect_url') ?? site_url('/');
+        //$redirectURL = '/dashboard';
         unset($_SESSION['redirect_url']);
 
         return redirect()->to($redirectURL)->withCookies()->with('message', lang('Auth.loginSuccess'));

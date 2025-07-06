@@ -15,7 +15,7 @@ class Auth extends \Myth\Auth\Config\Auth
      *
      * @var string
      */
-    public $defaultUserGroup;
+    public $defaultUserGroup='Users';
 
     /**
      * --------------------------------------------------------------------
@@ -30,7 +30,7 @@ class Auth extends \Myth\Auth\Config\Auth
      *
      * @var string
      */
-    public $landingRoute = '/';
+    public $landingRoute = 'dashboard';
 
     /**
      * --------------------------------------------------------------------
@@ -212,7 +212,7 @@ class Auth extends \Myth\Auth\Config\Auth
      *
      * @var bool
      */
-    public $allowRemembering = false;
+    public $allowRemembering = true;
 
     /**
      * --------------------------------------------------------------------
