@@ -4,9 +4,9 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use CodeIgniter\Session\Session;
-use Myth\Auth\Config\Auth as AuthConfig;
-use Myth\Auth\Entities\User;
-use Myth\Auth\Models\UserModel;
+use App\Cofig\Auth as AuthConfig;
+use App\Entities\User;
+use App\Models\UserModel;
 
 class AuthController extends Controller
 {
@@ -93,12 +93,16 @@ class AuthController extends Controller
         if ($this->auth->user()->force_pass_reset === true) {
             return redirect()->to(route_to('reset-password') . '?token=' . $this->auth->user()->reset_hash)->withCookies();
         }
+                //$redirectURL = '/dashboard';
 
-        $redirectURL = session('redirect_url') ?? site_url('/');
-        //$redirectURL = '/dashboard';
+        $redirectURL = session('redirect_url') ?? site_url('/dashboard');
+
         unset($_SESSION['redirect_url']);
+       // dd($redirectURL);
 
         return redirect()->to($redirectURL)->withCookies()->with('message', lang('Auth.loginSuccess'));
+        // return redirect()->to($redirectURL)->with('message', lang('Auth.loginSuccess'));
+        //return redirect()->to('/dashboard');
     }
 
     /**
