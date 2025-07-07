@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 07, 2025 at 12:35 AM
+-- Generation Time: Jul 07, 2025 at 06:14 PM
 -- Server version: 8.4.5-cluster
 -- PHP Version: 8.2.28
 
@@ -147,7 +147,8 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (29, '127.0.0.1', 'elab.admin@gmail.com', 2, '2025-07-06 23:27:21', 1),
 (30, '127.0.0.1', 'elab.admin@gmail.com', 2, '2025-07-06 23:28:00', 1),
 (31, '127.0.0.1', 'elab.admin@gmail.com', 2, '2025-07-06 23:28:09', 1),
-(32, '127.0.0.1', 'elab.admin@gmail.com', 2, '2025-07-06 23:29:46', 1);
+(32, '127.0.0.1', 'elab.admin@gmail.com', 2, '2025-07-06 23:29:46', 1),
+(33, '127.0.0.1', 'elab.admin@gmail.com', 2, '2025-07-07 07:00:16', 1);
 
 -- --------------------------------------------------------
 
@@ -167,7 +168,8 @@ CREATE TABLE `auth_permissions` (
 
 INSERT INTO `auth_permissions` (`id`, `name`, `description`) VALUES
 (1, 'manage-users', 'Manage All Users'),
-(2, 'manage-profile', 'Manage user\'s profile');
+(2, 'manage-profile', 'Manage user\'s profile'),
+(3, 'manage-menu', 'Manage system menu\'s');
 
 -- --------------------------------------------------------
 
@@ -10681,21 +10683,6 @@ CREATE TABLE `tb_user_menu` (
   `logo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tb_user_menu`
---
-
-INSERT INTO `tb_user_menu` (`id`, `menu`, `logo`) VALUES
-(1, 'Admin', 'fas fa-fw fa-gem'),
-(2, 'User', 'fas fa-fw fa-user-circle'),
-(3, 'Menu', 'fas fa-fw fa-compass'),
-(14, 'Activity', 'fas fa-fw fa-lightbulb'),
-(19, 'Info', 'fas fa-fw fa-comment'),
-(20, 'Permohonan', 'fas fa-fw fa-paper-plane'),
-(21, 'Permohonan', 'fas fa-fw fa-paper-plane'),
-(23, 'Peralatan', 'fas fa-fw fa-gas-pump'),
-(24, 'Asisten', 'fas fa-fw fa-hourglass');
-
 -- --------------------------------------------------------
 
 --
@@ -11978,13 +11965,13 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
 --
 ALTER TABLE `auth_permissions`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `auth_reset_attempts`
