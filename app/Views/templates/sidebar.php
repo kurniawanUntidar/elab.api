@@ -67,9 +67,38 @@
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
+            <?php if(user()){ 
+                $link = base_url()."logout";
+                $dataTogle = "modal";   
+                $dataTarget = "#logoutModal";
+                $linkText = "Logout";
+                $icon = "fas fa-sign-out-alt";
+            } else {
+                $link = base_url()."login";
+                $dataTogle = "button"; 
+                $dataTarget = "";
+                $linkText = "Login";
+                $icon = "fas fa-sign-in-alt";
+            } ?>
+
+            <li class="nav-item">
+                <a class="nav-link btn btn-secondary btn-user btn-block"  type="button"
+                        href="<?= $link ?>" 
+                        data-toggle=<?=$dataTogle?> 
+                        data-target=<?=$dataTarget?>>
+                    <i class="<?= $icon ?>"></i>
+                    <span><?= $linkText ?></span>
+        </a>
+            </li>
+
+            
+            <hr class="sidebar-divider d-none d-md-block">
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+
+            
 
         </ul>
