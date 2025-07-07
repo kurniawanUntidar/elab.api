@@ -82,7 +82,7 @@
             } ?>
 
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary btn-user btn-block"  type="button"
+                <a class="nav-link btn bg-gradient-secondary btn-block"  type="button"
                         href="<?= $link ?>" 
                         data-toggle=<?=$dataTogle?> 
                         data-target=<?=$dataTarget?>>
