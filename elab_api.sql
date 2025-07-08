@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 07, 2025 at 06:14 PM
--- Server version: 8.4.5-cluster
+-- Generation Time: Jul 08, 2025 at 10:15 AM
+-- Server version: 8.4.5
 -- PHP Version: 8.2.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -74,6 +74,9 @@ CREATE TABLE `auth_groups_permissions` (
 INSERT INTO `auth_groups_permissions` (`group_id`, `permission_id`) VALUES
 (1, 1),
 (1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
 (2, 2);
 
 -- --------------------------------------------------------
@@ -92,9 +95,7 @@ CREATE TABLE `auth_groups_users` (
 --
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
-(1, 1),
-(2, 2),
-(2, 3);
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -148,7 +149,16 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (30, '127.0.0.1', 'elab.admin@gmail.com', 2, '2025-07-06 23:28:00', 1),
 (31, '127.0.0.1', 'elab.admin@gmail.com', 2, '2025-07-06 23:28:09', 1),
 (32, '127.0.0.1', 'elab.admin@gmail.com', 2, '2025-07-06 23:29:46', 1),
-(33, '127.0.0.1', 'elab.admin@gmail.com', 2, '2025-07-07 07:00:16', 1);
+(33, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 00:56:29', 1),
+(34, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 00:58:52', 1),
+(35, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 01:53:56', 1),
+(36, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 01:54:14', 1),
+(37, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 01:54:59', 1),
+(38, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 04:38:12', 1),
+(39, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 04:44:31', 1),
+(40, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 04:47:48', 1),
+(41, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 04:49:17', 1),
+(42, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-08 08:31:19', 1);
 
 -- --------------------------------------------------------
 
@@ -169,7 +179,9 @@ CREATE TABLE `auth_permissions` (
 INSERT INTO `auth_permissions` (`id`, `name`, `description`) VALUES
 (1, 'manage-users', 'Manage All Users'),
 (2, 'manage-profile', 'Manage user\'s profile'),
-(3, 'manage-menu', 'Manage system menu\'s');
+(3, 'process-management', 'Manage all processes'),
+(4, 'document-management', 'Manage all document'),
+(5, 'inventory-management', 'Manage inventory and facility on lab');
 
 -- --------------------------------------------------------
 
@@ -233,6 +245,8 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
 (1, '2017-11-20-223112', 'App\\Database\\Migrations\\CreateAuthTables', 'default', 'App', 1751544828, 1),
+(2, '2017-11-20-223112', 'App\\Database\\Migrations\\CreateAuthTables', 'default', 'App', 1751617943, 1),
+(5, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1751848862, 2),
 (12, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1751835293, 2);
 
 -- --------------------------------------------------------
@@ -9367,7 +9381,6 @@ CREATE TABLE `tb_info` (
   `judul` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `penulis` varchar(35) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `isi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `gambar` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `created` int NOT NULL,
   `is_active` int NOT NULL,
   `role_id` int NOT NULL
@@ -9377,10 +9390,10 @@ CREATE TABLE `tb_info` (
 -- Dumping data for table `tb_info`
 --
 
-INSERT INTO `tb_info` (`id`, `kategori_id`, `judul`, `penulis`, `isi`, `gambar`, `created`, `is_active`, `role_id`) VALUES
-(8, 1, 'Pelaksanaan Praktikum', 'Admin', '<p>Bapak/Ibu dosen pembimbing yang terhormat,</p>\r\n<p>Demi kalancarak kegiatan praktikum di laboratorium teknik elektro, kami mohon kesediaan bapak/ibu dosen pengampu praktikum untuk melakukan registrasi praktikum di sistem kami dengan meng klik tautan dibawah ini.</p>\r\n<p><a class=\"btn btn-primary\" href=\"activity/praktikum\" role=\"button\">Pilih Mata Kuliah</a></p>', '', 1660624431, 1, 3),
-(10, 1, 'Verifikasi Pengguna Baru', 'admin@elab.untidar.ac.id', '<p>PENTING..!<br>Untuk pengguna yang baru registrasi, cek email anda. Apabila di kotak masuk (<em>inbox</em>) tidak terdapat email verifikasi dari kami, harap cek di folder spam email anda.<br><br>Apabila dalam waktu 1x24 jam tidak juga ada email verifikasi akun, silahkan hubungi Pranata Laboratorium Pendidikan&nbsp;</p>', '', 1690418575, 1, 8),
-(11, 1, 'Peminjaman ALat', 'admin.elab@untidar.ac.id', '<p>Pengguna yang telah teregistrasi dapat mengajukan peminjaman alat melalui applikasi</p>', '', 1690446953, 1, 2);
+INSERT INTO `tb_info` (`id`, `kategori_id`, `judul`, `penulis`, `isi`, `created`, `is_active`, `role_id`) VALUES
+(8, 1, 'Pelaksanaan Praktikum', 'Admin', '<p>Bapak/Ibu dosen pembimbing yang terhormat,</p>\r\n<p>Demi kalancarak kegiatan praktikum di laboratorium teknik elektro, kami mohon kesediaan bapak/ibu dosen pengampu praktikum untuk melakukan registrasi praktikum di sistem kami dengan meng klik tautan dibawah ini.</p>\r\n<p><a class=\"btn btn-primary\" href=\"activity/praktikum\" role=\"button\">Pilih Mata Kuliah</a></p>', 1660624431, 1, 3),
+(10, 1, 'Verifikasi Pengguna Baru', 'admin@elab.untidar.ac.id', '<p>PENTING..!<br>Untuk pengguna yang baru registrasi, cek email anda. Apabila di kotak masuk (<em>inbox</em>) tidak terdapat email verifikasi dari kami, harap cek di folder spam email anda.<br><br>Apabila dalam waktu 1x24 jam tidak juga ada email verifikasi akun, silahkan hubungi Pranata Laboratorium Pendidikan&nbsp;</p>', 1690418575, 1, 8),
+(11, 1, 'Peminjaman ALat', 'admin.elab@untidar.ac.id', '<p>Pengguna yang telah teregistrasi dapat mengajukan peminjaman alat melalui applikasi</p>', 1690446953, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -10680,8 +10693,21 @@ INSERT INTO `tb_user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 CREATE TABLE `tb_user_menu` (
   `id` int NOT NULL,
   `menu` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `logo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `logo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `permission_id` int UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_user_menu`
+--
+
+INSERT INTO `tb_user_menu` (`id`, `menu`, `logo`, `permission_id`) VALUES
+(26, 'Dashboard', 'fas fa-fw fa-tachometer-alt', 2),
+(27, 'Manage', 'fas fa-fw fa-bars-progress', 4),
+(28, 'Inventory', 'fas fa-fw fa-warehouse', 5),
+(29, 'Dokumen Mutu', 'fas fa-fw fa-book', 4),
+(30, 'Pengelolaan Lab', 'fas fa-fw fa-toolbox\'', 3),
+(31, 'Profile', 'fas fa-fw fa-profile', 2);
 
 -- --------------------------------------------------------
 
@@ -11722,9 +11748,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'dwi.kurniawan@untidar.ac.id', 'kurniawan', '$2y$10$X6IOaVuU9SNOAFZNJW32O.41KjV/kDU46dORTl9AVVJx2SWrG.6Um', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2025-07-06 21:14:44', '2025-07-06 21:14:44', NULL),
-(2, 'elab.admin@gmail.com', 'Elab', '$2y$10$oDDYwaKCQZetQbmVVVWC2.1FMgHvAN3AsCTxZv.h0l3gNR80UqhsW', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2025-07-06 21:30:47', '2025-07-06 21:30:47', NULL),
-(3, 'kurniawan@gmail.com', 'Mahasiswa', '$2y$10$6S2ERALNSbqVSkn.kpz.H.S5RLdRmSi8FJTwRIhsPggTxUBbOJnXS', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2025-07-06 21:33:04', '2025-07-06 21:33:04', NULL);
+(1, 'dwi.kurniawan@untidar.ac.id', 'kurniawan', '$2y$10$0VBk4uDqKEvzLegwu9WMEebl6ON.bBzlhxeRMtzzGfH9kSvludisK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2025-07-07 00:56:18', '2025-07-07 00:56:18', NULL);
 
 --
 -- Indexes for dumped tables
@@ -11917,7 +11941,8 @@ ALTER TABLE `tb_user_access_menu`
 -- Indexes for table `tb_user_menu`
 --
 ALTER TABLE `tb_user_menu`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `permission_id` (`permission_id`);
 
 --
 -- Indexes for table `tb_user_submenu`
@@ -11965,13 +11990,13 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
 --
 ALTER TABLE `auth_permissions`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `auth_reset_attempts`
@@ -12109,7 +12134,7 @@ ALTER TABLE `tb_user_access_menu`
 -- AUTO_INCREMENT for table `tb_user_menu`
 --
 ALTER TABLE `tb_user_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tb_user_submenu`
@@ -12133,7 +12158,7 @@ ALTER TABLE `tb_vendor`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -12165,6 +12190,12 @@ ALTER TABLE `auth_tokens`
 ALTER TABLE `auth_users_permissions`
   ADD CONSTRAINT `auth_users_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `tb_user_menu`
+--
+ALTER TABLE `tb_user_menu`
+  ADD CONSTRAINT `tb_user_menu_ibfk_1` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
