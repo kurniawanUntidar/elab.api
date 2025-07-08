@@ -12,7 +12,7 @@ class MenuModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['menu','logo', 'group_id'];
+    protected $allowedFields    = ['menu','logo', 'permission_id'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

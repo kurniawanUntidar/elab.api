@@ -18,15 +18,14 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <?php if(!user() == null){
-     //   echo '<h1 class="h3 mb-4 text-gray-800">Welcome, ' . user()->username . '</h1>';
-               //dd(user());
-            } ?>
-           
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
+           <?php foreach ($menu as $menuItem): ?>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="<?= $menuItem['logo'] ?>"></i>
+                    <span><?= $menuItem['menu'] ?></span></a>
+            </li>
+             <hr class="sidebar-divider">
+            <?php endforeach; ?>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
