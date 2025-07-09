@@ -5,29 +5,20 @@
                 <img src="<?= base_url();?>img/Logo-elab.svg" alt="Elab" height="60">
             </a>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
            <?php foreach ($menu as $menuItem): ?>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link collapsed" href="index.html" data-toggle="collapse">
                     <i class="<?= $menuItem['logo'] ?>"></i>
                     <span><?= $menuItem['menu'] ?></span></a>
             </li>
              <hr class="sidebar-divider">
             <?php endforeach; ?>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -44,24 +35,8 @@
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Nav Item - My Profile -->
-            <li class="nav-item">
-                <a class="nav-link" href="My Profile.html">
-                    <i class="fas fa-fw fa-user-plus"></i>
-                    <span>My Profile</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
