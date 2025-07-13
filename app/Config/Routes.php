@@ -8,6 +8,7 @@ use Myth\Auth\Config\Auth as AuthConfig;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/dashboard', 'Users::index');
+$routes->get('/alat', 'Alat::index');
 
 $routes->group('', ['namespace' => 'App\Controllers'], static function ($routes) {
     // Load the reserved routes from Auth.php

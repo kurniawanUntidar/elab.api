@@ -11,13 +11,13 @@
           <a class="nav-link active " aria-current="page" href="<?= base_url();?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?= base_url();?>/profile">Profile</a>
+          <a class="nav-link active" aria-current="page" href="<?= base_url();?>profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?= base_url();?>/">Alat</a>
+          <a class="nav-link active" aria-current="page" href="<?= base_url();?>alat">Alat</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?= base_url();?>/">Bahan</a>
+          <a class="nav-link active" aria-current="page" href="<?= base_url();?>">Bahan</a>
         </li>
         <div class="topbar-divider d-none d-sm-block"></div>
   

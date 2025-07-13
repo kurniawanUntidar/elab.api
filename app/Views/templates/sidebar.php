@@ -12,7 +12,7 @@
            <?php foreach ($menu as $menuItem): 
                 if ($menuItem['menu'] == 'Dashboard') { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="<?= base_url() ?>dashboard">
                             <i class="<?= $menuItem['logo'] ?>"></i>
                             <span><?= $menuItem['menu'] ?></span></a>
                     </li>
