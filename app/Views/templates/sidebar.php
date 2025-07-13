@@ -9,13 +9,23 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-           <?php foreach ($menu as $menuItem): ?>
-            <li class="nav-item">
+           <?php foreach ($menu as $menuItem): 
+                if ($menuItem['menu'] == 'Dashboard') { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="<?= $menuItem['logo'] ?>"></i>
+                            <span><?= $menuItem['menu'] ?></span></a>
+                    </li>
+                    <hr class="sidebar-divider">
+               <?php } else{ ?>
+                <li class="nav-item">
                 <a class="nav-link collapsed" href="index.html" data-toggle="collapse">
                     <i class="<?= $menuItem['logo'] ?>"></i>
                     <span><?= $menuItem['menu'] ?></span></a>
-            </li>
-             <hr class="sidebar-divider">
+                </li>
+                <hr class="sidebar-divider">
+              <?php } ?>
+            
             <?php endforeach; ?>
 
             <!-- Nav Item - Utilities Collapse Menu

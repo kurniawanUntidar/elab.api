@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 08, 2025 at 10:15 AM
+-- Generation Time: Jul 13, 2025 at 10:20 AM
 -- Server version: 8.4.5
 -- PHP Version: 8.2.28
 
@@ -10703,11 +10703,11 @@ CREATE TABLE `tb_user_menu` (
 
 INSERT INTO `tb_user_menu` (`id`, `menu`, `logo`, `permission_id`) VALUES
 (26, 'Dashboard', 'fas fa-fw fa-tachometer-alt', 2),
-(27, 'Manage', 'fas fa-fw fa-bars-progress', 4),
+(27, 'Manage', 'fas fa-fw fa-database', 4),
 (28, 'Inventory', 'fas fa-fw fa-warehouse', 5),
 (29, 'Dokumen Mutu', 'fas fa-fw fa-book', 4),
-(30, 'Pengelolaan Lab', 'fas fa-fw fa-toolbox\'', 3),
-(31, 'Profile', 'fas fa-fw fa-profile', 2);
+(30, 'Pengelolaan Lab', 'fas fa-fw fa-toolbox', 3),
+(31, 'Profile', 'fas fa-fw fa-address-card', 2);
 
 -- --------------------------------------------------------
 
@@ -10729,29 +10729,8 @@ CREATE TABLE `tb_user_submenu` (
 --
 
 INSERT INTO `tb_user_submenu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
-(6, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-check', 1),
-(18, 3, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
-(19, 2, 'Dashboard', 'user', 'fas fa-fw fa-tachometer-alt', 1),
-(20, 3, 'Submenu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
-(21, 2, 'My Profile', 'user/profile', 'fas fa-fw fa-user', 1),
-(22, 2, 'Edit Profil', 'user/edit', 'fas fa-fw fa-user-edit', 1),
-(23, 2, 'Change Password', 'user/changePassword', 'fas fa-fw fa-key', 1),
-(24, 1, 'Master User', 'admin/masterUser', 'fas fa-fw fa-table', 1),
-(25, 14, 'Praktikum', 'activity/praktikum', 'fas fa-fw fa-microscope', 1),
-(26, 14, 'Penelitian', 'activity/penelitian', 'fas fa-fw fa-microchip', 1),
-(27, 1, 'Master Praktikum', 'admin/masterPraktikum', 'fas fa-fw fa-table', 1),
-(31, 1, 'Master Alat', 'admin/masterAlat', 'fas fa-fw fa-table', 1),
-(32, 1, 'Master Bahan', 'admin/masterBahan', 'fas fa-fw fa-table', 1),
-(35, 19, 'Pengumuman', 'info/pengumuman', 'fas fa-fw fa-table', 1),
-(36, 20, 'Per. Bebas Lab', 'permohonan/bebasLab', 'fas fa-fw fa-table', 1),
-(37, 20, 'Per. Pinjam Alat', 'permohonan/pinjamAlat', 'fas fa-fw fa-table', 1),
-(38, 21, 'Bebas Laboratorium', 'user/bebasLab', 'fas fa-fw fa-table', 1),
-(39, 21, 'Pinjam Alat', 'user/pinjamAlat', 'fas fa-fw fa-table', 1),
-(43, 23, 'Penggunaan', 'alat/penggunaan', 'fas fa-fw fa-hand-holding-water', 1),
-(44, 23, 'Perawatan', 'alat/perawatan', 'fas fa-fw fa-hand-holding-medical', 1),
-(45, 23, 'Evaluasi / Kalibrasi', 'alat/evaluasi', 'fas fa-fw fa-hand-holding-heart', 1),
-(46, 23, 'Cetak QR', 'alat/cetakQR', 'fas fa-fw fa-qrcode', 1),
-(48, 24, 'Praktikum', 'user/praktikum', 'fas fa-fw fa-hand-scissors', 1);
+(51, 27, 'Groups', '', '', 1),
+(52, 27, 'Users', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -11942,13 +11921,15 @@ ALTER TABLE `tb_user_access_menu`
 --
 ALTER TABLE `tb_user_menu`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `permission_id` (`permission_id`);
+  ADD KEY `permission_id` (`permission_id`),
+  ADD KEY `menu` (`menu`);
 
 --
 -- Indexes for table `tb_user_submenu`
 --
 ALTER TABLE `tb_user_submenu`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `menu_id` (`menu_id`);
 
 --
 -- Indexes for table `tb_user_token`
@@ -12140,7 +12121,7 @@ ALTER TABLE `tb_user_menu`
 -- AUTO_INCREMENT for table `tb_user_submenu`
 --
 ALTER TABLE `tb_user_submenu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `tb_user_token`
@@ -12196,6 +12177,12 @@ ALTER TABLE `auth_users_permissions`
 --
 ALTER TABLE `tb_user_menu`
   ADD CONSTRAINT `tb_user_menu_ibfk_1` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_user_submenu`
+--
+ALTER TABLE `tb_user_submenu`
+  ADD CONSTRAINT `tb_user_submenu_ibfk_1` FOREIGN KEY (`menu_id`) REFERENCES `tb_user_menu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
