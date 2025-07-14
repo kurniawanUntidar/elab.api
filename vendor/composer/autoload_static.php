@@ -23,6 +23,10 @@ class ComposerStaticInit2863eb527fd313d534b97c8fb39d6c8a
             'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
         ),
+        'O' => 
+        array (
+            'Ozdemir\\Datatables\\' => 19,
+        ),
         'M' => 
         array (
             'Myth\\Auth\\' => 10,
@@ -67,6 +71,10 @@ class ComposerStaticInit2863eb527fd313d534b97c8fb39d6c8a
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'Ozdemir\\Datatables\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ozdemir/datatables/src',
+        ),
         'Myth\\Auth\\' => 
         array (
             0 => __DIR__ . '/..' . '/myth/auth/src',
@@ -108,14 +116,23 @@ class ComposerStaticInit2863eb527fd313d534b97c8fb39d6c8a
     );
 
     public static $classMap = array (
+        'App\\Controllers\\Alat' => __DIR__ . '/../..' . '/app/Controllers/Alat.php',
         'App\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Controllers/AuthController.php',
         'App\\Controllers\\BaseController' => __DIR__ . '/../..' . '/app/Controllers/BaseController.php',
         'App\\Controllers\\Home' => __DIR__ . '/../..' . '/app/Controllers/Home.php',
+        'App\\Controllers\\Users' => __DIR__ . '/../..' . '/app/Controllers/Users.php',
+        'App\\Database\\Seeds\\DatabaseSeeder' => __DIR__ . '/../..' . '/app/Database/Seeds/DatabaseSeeder.php',
+        'App\\Database\\Seeds\\GroupSeeder' => __DIR__ . '/../..' . '/app/Database/Seeds/GroupSeeder.php',
+        'App\\Database\\Seeds\\MenuSeeder' => __DIR__ . '/../..' . '/app/Database/Seeds/MenuSeeder.php',
+        'App\\Database\\Seeds\\PermissionSeeder' => __DIR__ . '/../..' . '/app/Database/Seeds/PermissionSeeder.php',
+        'App\\Database\\Seeds\\UserSeeder' => __DIR__ . '/../..' . '/app/Database/Seeds/UserSeeder.php',
         'App\\Entities\\User' => __DIR__ . '/../..' . '/app/Entities/User.php',
         'App\\Filters\\LoginFilter' => __DIR__ . '/../..' . '/app/Filters/LoginFilter.php',
         'App\\Filters\\PermissionFilter' => __DIR__ . '/../..' . '/app/Filters/PermissionFilter.php',
         'App\\Filters\\RoleFilter' => __DIR__ . '/../..' . '/app/Filters/RoleFilter.php',
+        'App\\Models\\InfoModel' => __DIR__ . '/../..' . '/app/Models/InfoModel.php',
         'App\\Models\\LoginModel' => __DIR__ . '/../..' . '/app/Models/LoginModel.php',
+        'App\\Models\\MenuModel' => __DIR__ . '/../..' . '/app/Models/MenuModel.php',
         'App\\Models\\UserModel' => __DIR__ . '/../..' . '/app/Models/UserModel.php',
         'CodeIgniter\\API\\ResponseTrait' => __DIR__ . '/..' . '/codeigniter4/framework/system/API/ResponseTrait.php',
         'CodeIgniter\\Autoloader\\Autoloader' => __DIR__ . '/..' . '/codeigniter4/framework/system/Autoloader/Autoloader.php',
@@ -1154,6 +1171,31 @@ class ComposerStaticInit2863eb527fd313d534b97c8fb39d6c8a
         'Myth\\Auth\\Test\\Fakers\\GroupFaker' => __DIR__ . '/..' . '/myth/auth/src/Test/Fakers/GroupFaker.php',
         'Myth\\Auth\\Test\\Fakers\\PermissionFaker' => __DIR__ . '/..' . '/myth/auth/src/Test/Fakers/PermissionFaker.php',
         'Myth\\Auth\\Test\\Fakers\\UserFaker' => __DIR__ . '/..' . '/myth/auth/src/Test/Fakers/UserFaker.php',
+        'Ozdemir\\Datatables\\Column' => __DIR__ . '/..' . '/ozdemir/datatables/src/Column.php',
+        'Ozdemir\\Datatables\\ColumnNameList' => __DIR__ . '/..' . '/ozdemir/datatables/src/ColumnNameList.php',
+        'Ozdemir\\Datatables\\CustomFilterType' => __DIR__ . '/..' . '/ozdemir/datatables/src/CustomFilterType.php',
+        'Ozdemir\\Datatables\\DB\\Codeigniter4Adapter' => __DIR__ . '/..' . '/ozdemir/datatables/src/DB/Codeigniter4Adapter.php',
+        'Ozdemir\\Datatables\\DB\\CodeigniterAdapter' => __DIR__ . '/..' . '/ozdemir/datatables/src/DB/CodeigniterAdapter.php',
+        'Ozdemir\\Datatables\\DB\\DBAdapter' => __DIR__ . '/..' . '/ozdemir/datatables/src/DB/DBAdapter.php',
+        'Ozdemir\\Datatables\\DB\\DatabaseInterface' => __DIR__ . '/..' . '/ozdemir/datatables/src/DB/DatabaseInterface.php',
+        'Ozdemir\\Datatables\\DB\\LaravelAdapter' => __DIR__ . '/..' . '/ozdemir/datatables/src/DB/LaravelAdapter.php',
+        'Ozdemir\\Datatables\\DB\\MySQL' => __DIR__ . '/..' . '/ozdemir/datatables/src/DB/MySQL.php',
+        'Ozdemir\\Datatables\\DB\\PGSQL' => __DIR__ . '/..' . '/ozdemir/datatables/src/DB/PGSQL.php',
+        'Ozdemir\\Datatables\\DB\\PSAdapter' => __DIR__ . '/..' . '/ozdemir/datatables/src/DB/PSAdapter.php',
+        'Ozdemir\\Datatables\\DB\\PhalconAdapter' => __DIR__ . '/..' . '/ozdemir/datatables/src/DB/PhalconAdapter.php',
+        'Ozdemir\\Datatables\\DB\\SQLite' => __DIR__ . '/..' . '/ozdemir/datatables/src/DB/SQLite.php',
+        'Ozdemir\\Datatables\\Datatables' => __DIR__ . '/..' . '/ozdemir/datatables/src/Datatables.php',
+        'Ozdemir\\Datatables\\Explode' => __DIR__ . '/..' . '/ozdemir/datatables/src/Explode.php',
+        'Ozdemir\\Datatables\\FilterHelper' => __DIR__ . '/..' . '/ozdemir/datatables/src/FilterHelper.php',
+        'Ozdemir\\Datatables\\Http\\ParameterBag' => __DIR__ . '/..' . '/ozdemir/datatables/src/Http/ParameterBag.php',
+        'Ozdemir\\Datatables\\Http\\Request' => __DIR__ . '/..' . '/ozdemir/datatables/src/Http/Request.php',
+        'Ozdemir\\Datatables\\Iterators\\ColumnCollection' => __DIR__ . '/..' . '/ozdemir/datatables/src/Iterators/ColumnCollection.php',
+        'Ozdemir\\Datatables\\Iterators\\GlobalSearchableColumns' => __DIR__ . '/..' . '/ozdemir/datatables/src/Iterators/GlobalSearchableColumns.php',
+        'Ozdemir\\Datatables\\Iterators\\IndividualSearchableColumns' => __DIR__ . '/..' . '/ozdemir/datatables/src/Iterators/IndividualSearchableColumns.php',
+        'Ozdemir\\Datatables\\Iterators\\VisibleColumns' => __DIR__ . '/..' . '/ozdemir/datatables/src/Iterators/VisibleColumns.php',
+        'Ozdemir\\Datatables\\Option' => __DIR__ . '/..' . '/ozdemir/datatables/src/Option.php',
+        'Ozdemir\\Datatables\\Query' => __DIR__ . '/..' . '/ozdemir/datatables/src/Query.php',
+        'Ozdemir\\Datatables\\QueryBuilder' => __DIR__ . '/..' . '/ozdemir/datatables/src/QueryBuilder.php',
         'PHPUnit\\Event\\Application\\Finished' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Application/Finished.php',
         'PHPUnit\\Event\\Application\\FinishedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Application/FinishedSubscriber.php',
         'PHPUnit\\Event\\Application\\Started' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Application/Started.php',

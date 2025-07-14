@@ -10,6 +10,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
+    'Ozdemir\\Datatables\\' => array($vendorDir . '/ozdemir/datatables/src'),
     'Myth\\Auth\\' => array($vendorDir . '/myth/auth/src'),
     'Laminas\\Escaper\\' => array($vendorDir . '/laminas/laminas-escaper/src'),
     'Faker\\' => array($vendorDir . '/fakerphp/faker/src/Faker'),
