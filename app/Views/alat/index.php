@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-md-8"> 
                         <p class="card-text">: <?= $alat['merk'];?><br>: <?= $alat['type'];?><br>: <?= $alat['kategori'];?><br>: <a href="<?=base_url('doc/IK/') .$alat['IK'];?>"><?= $alat['IK'];?></a><br>: <?= $alat['jumlah'];?></p>     
-                        <a href="<?= base_url('alat/detail/').$alat['nama_alat'] ?>" class="btn btn-success mt-3">Detail</a>       
+                        <a href="<?= base_url('alat/').$alat['nama_alat'] ?>" class="btn btn-success mt-3">Detail</a>       
                     </div>
                     </div>
                   </div>

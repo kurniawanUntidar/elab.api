@@ -32,7 +32,7 @@ class Alat extends BaseController
 
     public function detail($namaAlat)
     {
-        $data['alat'] = $this->builder->select('kode, register,nama_alat, merk, type, kategori, kondisi, ketersediaan, IK')
+        $data['alat'] = $this->builder->select('id,kode, register,nama_alat, merk, type, kategori, kondisi, ketersediaan, IK')
             ->getWhere(['nama_alat'=>$namaAlat])
             ->getResultArray();
         $data['title'] = 'Alat';

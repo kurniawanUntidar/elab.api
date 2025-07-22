@@ -17,7 +17,7 @@
           <a class="nav-link active" aria-current="page" href="<?= base_url();?>alat">Alat</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?= base_url();?>">Bahan</a>
+          <a class="nav-link active" aria-current="page" href="<?= base_url();?>bahan">Bahan</a>
         </li>
         <div class="topbar-divider d-none d-sm-block"></div>
   

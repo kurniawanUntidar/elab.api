@@ -17,14 +17,17 @@
                             <span><?= $menuItem['menu'] ?></span></a>
                     </li>
                     <hr class="sidebar-divider">
-               <?php } else{ ?>
+               <?php } else{ 
+                if(has_permission('manage-users')&&$menuItem['permission_id']==2){ ?>
+
                 <li class="nav-item">
                 <a class="nav-link collapsed" href="index.html" data-toggle="collapse">
                     <i class="<?= $menuItem['logo'] ?>"></i>
                     <span><?= $menuItem['menu'] ?></span></a>
                 </li>
                 <hr class="sidebar-divider">
-              <?php } ?>
+              <?php }
+            } ?>
             
             <?php endforeach; ?>
 
