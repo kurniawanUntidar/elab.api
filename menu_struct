@@ -1,34 +1,40 @@
-Dashboard
+[1]Dashboard
 
-Management
-- Groups
-- Users
-- Role
-- Permissions
-- Menu
-- Submenu
+[2]Management
+	11- Groups
+	12- Users
+	13- Role
+	14- Permissions
+	15- Menu
+	16- Submenu
 
-Inventory
-- Alat
-- Bahan
-- Fasilitas
+[3]Inventory
+	21- Alat
+	22- Bahan
+	23- Fasilitas
 
-Dokument Mutu
-- Level 1
-- Level 2
-- Level 3
-- Level 4
+[4]Dokument Mutu
+	31- Level 1
+	32- Level 2
+	33- Level 3
+	34- Level 4
 
-Pengelolaan Lab.
-- Penggunaan
-- Perawatan
-- Evaluasi/Kalibrasi
-- Cetak QR
+[5]Pengelolaan Lab.
+	41- Penggunaan
+	42- Perawatan
+	43- Evaluasi/Kalibrasi
+	44- Cetak QR
 
-Profile
-- My Profile
-- Edit Profile
-- Change Password
+[6]Profile
+	51- My Profile
+	52- Edit Profile
+	53- Change Password
+
+[7]Permohonan
+	61- Surat keterangan bebas lab
+	62- Peminjaman Alat
+	63- Pengadaan Alat
+	64- Pengadaan Bahan
 
 
 

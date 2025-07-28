@@ -18,7 +18,7 @@ class Home extends BaseController
             'title' => 'Home',
             'active' => 'home',
             'info' => $this->InfoModel->orderBy('created', 'DESC')->findAll(),
-            'menu' => $this->menu, // Assuming $this->menu is set in BaseController
+            'sidebarMenus' => $this->sidebarMenus, 
         ];
         return view('home', $data);
     }

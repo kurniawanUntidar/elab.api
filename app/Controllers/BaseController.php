@@ -53,7 +53,7 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         $menuModel = model('App\Models\MenuModel');
-        $this->menu = $menuModel->findAll();    
+        $this->sidebarMenus = $menuModel->getMenus(true); // Ambil menu dengan filter permission
 
         // Preload any models, libraries, etc, here.
 

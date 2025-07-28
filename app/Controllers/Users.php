@@ -16,7 +16,7 @@ class Users extends BaseController
     {
         $data = [
             'title' => 'Dashboard',
-            'menu' => $this->menu, 
+            'sidebarMenus' => $this->sidebarMenus, 
             'active' => 'dashboard',
         ];
         return view('users/dashboard',$data);

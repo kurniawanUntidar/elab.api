@@ -9,27 +9,49 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-           <?php foreach ($menu as $menuItem): 
-                if ($menuItem['menu'] == 'Dashboard') { ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url() ?>dashboard">
-                            <i class="<?= $menuItem['logo'] ?>"></i>
-                            <span><?= $menuItem['menu'] ?></span></a>
-                    </li>
-                    <hr class="sidebar-divider">
-               <?php } else{ 
-                if(has_permission('manage-users')&&$menuItem['permission_id']==2){ ?>
+         
+    <?php if (logged_in()): ?>
+        <?php
+        // Dapatkan data menu dari controller (melalui view data)
+        // Pastikan Anda meneruskan variabel $sidebarMenus dari controller ke view layout utama.
+        // Contoh: return view('layout/main', ['sidebarMenus' => $this->sidebarMenus]);
+        $menus = $sidebarMenus ?? []; // Jika tidak ada, default ke array kosong
+      //  var_dump($menus);
+        ?>
 
-                <li class="nav-item">
-                <a class="nav-link collapsed" href="index.html" data-toggle="collapse">
-                    <i class="<?= $menuItem['logo'] ?>"></i>
-                    <span><?= $menuItem['menu'] ?></span></a>
+        <?php
+
+        foreach ($menus as $mainMenu): ?>
+            <?php if (empty($mainMenu['sub_menus'])): ?>
+                <li class="nav-item <?= url_is($mainMenu['url']) ? 'active' : '' ?>">
+                    <a class="nav-link" href="<?= base_url($mainMenu['url']) ?>">
+                        <i class="<?= esc($mainMenu['icon']) ?>"></i>
+                        <span><?= esc($mainMenu['title']) ?></span>
+                    </a>
                 </li>
-                <hr class="sidebar-divider">
-              <?php }
-            } ?>
-            
-            <?php endforeach; ?>
+            <?php else: ?>
+                <li class="nav-item <?= url_is(str_replace('#', '', $mainMenu['url']) . '*') ? 'active' : '' ?>">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse<?= esc($mainMenu['id']) ?>"
+                        aria-expanded="true" aria-controls="collapse<?= esc($mainMenu['id']) ?>">
+                        <i class="<?= esc($mainMenu['icon']) ?>"></i>
+                        <span><?= esc($mainMenu['title']) ?></span>
+                    </a>
+                    <div id="collapse<?= esc($mainMenu['id']) ?>" class="collapse <?= url_is(str_replace('#', '', $mainMenu['url']) . '*') ? 'show' : '' ?>" aria-labelledby="heading<?= esc($mainMenu['id']) ?>" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header"><?= esc($mainMenu['title']) ?>:</h6>
+                            <?php foreach ($mainMenu['sub_menus'] as $subMenu): ?>
+                                <a class="collapse-item <?= url_is($subMenu['url']) ? 'active' : '' ?>" href="<?= base_url($subMenu['url']) ?>">
+                                    <?= esc($subMenu['title']) ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </li>
+            <?php endif; ?>
+            <hr class="sidebar-divider">
+        <?php endforeach; ?>
+
+        <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Nav Item - Utilities Collapse Menu
             <li class="nav-item">
@@ -52,21 +74,20 @@
 
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
 
-            <?php if(user()){ 
+            <?php if(user()):
                 $link = base_url()."logout";
                 $dataTogle = "modal";   
                 $dataTarget = "#logoutModal";
                 $linkText = "Logout";
                 $icon = "fas fa-sign-out-alt";
-            } else {
+            else:
                 $link = base_url()."login";
                 $dataTogle = "button"; 
                 $dataTarget = "";
                 $linkText = "Login";
                 $icon = "fas fa-sign-in-alt";
-            } ?>
+            endif; ?>
 
             <li class="nav-item">
                 <a class="nav-link btn bg-gradient-secondary btn-block"  type="button"
@@ -74,8 +95,7 @@
                         data-toggle=<?=$dataTogle?> 
                         data-target=<?=$dataTarget?>>
                     <i class="<?= $icon ?>"></i>
-                    <span><?= $linkText ?></span>
-        </a>
+                    <span><?= $linkText ?></span></a>
             </li>
 
             
@@ -86,6 +106,6 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            
+          <?php endif; ?>
 
         </ul>
