@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 13, 2025 at 10:20 AM
--- Server version: 8.4.5
+-- Generation Time: Jul 28, 2025 at 12:33 AM
+-- Server version: 8.4.5-cluster
 -- PHP Version: 8.2.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `auth_activation_attempts` (
   `id` int UNSIGNED NOT NULL,
-  `ip_address` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `user_agent` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ip_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_agent` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -43,8 +43,8 @@ CREATE TABLE `auth_activation_attempts` (
 
 CREATE TABLE `auth_groups` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -95,7 +95,9 @@ CREATE TABLE `auth_groups_users` (
 --
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
-(2, 1);
+(1, 2),
+(2, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -105,8 +107,8 @@ INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 
 CREATE TABLE `auth_logins` (
   `id` int UNSIGNED NOT NULL,
-  `ip_address` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ip_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `user_id` int UNSIGNED DEFAULT NULL,
   `date` datetime NOT NULL,
   `success` tinyint(1) NOT NULL
@@ -158,7 +160,23 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (39, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 04:44:31', 1),
 (40, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 04:47:48', 1),
 (41, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-07 04:49:17', 1),
-(42, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-08 08:31:19', 1);
+(42, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-08 08:31:19', 1),
+(43, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-13 13:43:46', 1),
+(44, '127.0.0.1', 'Elab', NULL, '2025-07-21 22:18:01', 0),
+(45, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-21 22:18:07', 1),
+(46, '127.0.0.1', 'elab@untidar.ac.id', 2, '2025-07-21 22:20:04', 1),
+(47, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-21 22:33:13', 1),
+(48, '127.0.0.1', 'elab@untidar.ac.id', 2, '2025-07-21 22:33:45', 1),
+(49, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-21 23:10:48', 1),
+(50, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-21 23:11:02', 1),
+(51, '127.0.0.1', 'elab@untidar.ac.id', 2, '2025-07-21 23:11:25', 1),
+(52, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-22 06:19:05', 1),
+(53, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-22 06:22:03', 1),
+(54, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-26 16:30:27', 1),
+(55, '127.0.0.1', 'elab@untidar.ac.id', 2, '2025-07-26 16:31:57', 1),
+(56, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-26 16:43:12', 1),
+(57, '127.0.0.1', 'elab@untidar.ac.id', 2, '2025-07-26 16:43:46', 1),
+(58, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-27 07:15:24', 1);
 
 -- --------------------------------------------------------
 
@@ -168,8 +186,8 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 
 CREATE TABLE `auth_permissions` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_general_ci NOT NULL
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -191,10 +209,10 @@ INSERT INTO `auth_permissions` (`id`, `name`, `description`) VALUES
 
 CREATE TABLE `auth_reset_attempts` (
   `id` int UNSIGNED NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `ip_address` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `user_agent` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `ip_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `user_agent` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -206,8 +224,8 @@ CREATE TABLE `auth_reset_attempts` (
 
 CREATE TABLE `auth_tokens` (
   `id` int UNSIGNED NOT NULL,
-  `selector` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `hashedValidator` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `selector` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `hashedValidator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `user_id` int UNSIGNED NOT NULL,
   `expires` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -226,15 +244,71 @@ CREATE TABLE `auth_users_permissions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `menus`
+--
+
+CREATE TABLE `menus` (
+  `id` int UNSIGNED NOT NULL,
+  `parent_id` int UNSIGNED DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `order_position` int NOT NULL DEFAULT '0',
+  `permission_id` int UNSIGNED NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`id`, `parent_id`, `title`, `url`, `icon`, `order_position`, `permission_id`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Dashboard', '/', 'fas fa-fw fa-tachometer-alt', 1, 2, 1, NULL, NULL),
+(2, NULL, 'Management', '#', 'fas fa-fw fa-cogs', 10, 1, 1, NULL, NULL),
+(3, NULL, 'Inventory', '#', 'fas fa-fw fa-warehouse', 20, 5, 1, NULL, NULL),
+(4, NULL, 'Dokument Mutu', '#', 'fas fa-fw fa-book', 30, 4, 1, NULL, NULL),
+(5, NULL, 'Pengelolaan Lab.', '#', 'fas fa-fw fa-toolbox', 40, 3, 1, NULL, NULL),
+(6, NULL, 'Profile', '#', 'fas fa-fw fa-address-card', 50, 2, 1, NULL, NULL),
+(7, NULL, 'Permohonan', '#', NULL, 60, 2, 1, NULL, NULL),
+(8, 2, 'Groups', 'admin/groups', 'fas fa-fw fa-people-group', 11, 1, 1, NULL, NULL),
+(9, 2, 'Users', 'admin/users', 'fas fa-fw fa-users', 12, 1, 1, NULL, NULL),
+(10, 2, 'Role', 'admin/role', NULL, 13, 1, 1, NULL, NULL),
+(11, 2, 'Permissions', 'admin/permissions', NULL, 14, 1, 1, NULL, NULL),
+(12, 2, 'Menu', 'admin/menu', NULL, 15, 1, 1, NULL, NULL),
+(13, 2, 'Submenu', 'admin/submenu', NULL, 16, 1, 1, NULL, NULL),
+(14, 3, 'Alat', 'alat', NULL, 21, 5, 1, NULL, NULL),
+(15, 3, 'Bahan', 'bahan', NULL, 22, 5, 1, NULL, NULL),
+(16, 3, 'Fasilitas', 'fasilitas', NULL, 23, 5, 1, NULL, NULL),
+(17, 4, 'Level 1', 'document/level1', 'fas fa-fw fa-file', 31, 4, 1, NULL, NULL),
+(18, 4, 'Level 2', 'document/level2', 'fas fa-fw fa-file', 32, 4, 1, NULL, NULL),
+(19, 4, 'Level 3', 'document/level3', 'fas fa-fw fa-file', 33, 4, 1, NULL, NULL),
+(20, 4, 'Level 4', 'document/level4', 'fas fa-fw fa-file', 34, 4, 1, NULL, NULL),
+(21, 5, 'Penggunaan', 'alat/penggunaan', NULL, 41, 3, 1, NULL, NULL),
+(22, 5, 'Perawatan', 'alat/perawatan', NULL, 42, 3, 1, NULL, NULL),
+(23, 5, 'Evaluasi dan Kalibrasi', 'alat/evaluasi', NULL, 43, 3, 1, NULL, NULL),
+(24, 5, 'Cetak QR', 'alat/qr', NULL, 44, 3, 1, NULL, NULL),
+(25, 6, 'My Profile', 'user/profile', NULL, 51, 2, 1, NULL, NULL),
+(26, 6, 'Edit Profile', 'user/edit', NULL, 52, 2, 1, NULL, NULL),
+(27, 6, 'Change Password', 'user/changepassword', NULL, 53, 2, 1, NULL, NULL),
+(28, 7, 'Keterangan Bebas Laboratorium', 'permohonan/bebaslab', NULL, 61, 2, 1, NULL, NULL),
+(29, 7, 'Peminjaman Alat', 'permohonan/pinjamalat', NULL, 62, 2, 1, NULL, NULL),
+(30, 7, 'Pengadaan Alat', 'permohonan/pengadaanalat', NULL, 63, 5, 1, NULL, NULL),
+(31, 7, 'Pengadaan Bahan', 'permohonan/pengadaanbahan', NULL, 64, 5, 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
   `id` bigint UNSIGNED NOT NULL,
-  `version` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `class` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `group` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `namespace` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `version` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `class` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `group` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `namespace` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `time` int NOT NULL,
   `batch` int UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -9443,7 +9517,7 @@ INSERT INTO `tb_inventoryalat` (`id`, `barcode`, `kode`, `register`, `nama_alat`
 (12, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAFeCAIAAAB7LlEWAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAJg0lEQVR4nO3dwZLiuhmG4SaVytVknbn/ZdaZm8lsOouuQxEwwrYkS5/9PKupcxgw4HdEm7/t2/f39xeQ6W+jNwDYT8AQTMAQTMAQTMAQTMAQTMAQTMAQTMAQTMAQTMAQTMAQTMAQTMAQ7O+bbn273Tptxyjl36YsP9+a38Ts90rWPKM5H3fUMxpl035lBYZgAoZgAoZgAoZgAoZgAoZgAoZgAoZgAoZg2yaxyuY8R/ycM0CjXqs5p8f6Od8++cQKDMEEDMEEDMEEDMEEDMEEDMEEDMEEDMEEDMFaTmKVjTobUz/95rT6nYurRr/zh42a8TrBPmkFhmAChmAChmAChmAChmAChmAChmAChmAChmDHTWJdzah5qcSJKHazAkMwAUMwAUMwAUMwAUMwAUMwAUMwAUMwAUMwk1j79Zt5qpniGjVrNer5XpwVGIIJGIIJGIIJGIIJGIIJGIIJGIIJGIIJGIIdN4l1vmmbxKv19XsXEs+ndYJ90goMwQQMwQQMwQQMwQQMwQQMwQQMwQQMwQQMwVpOYiXO4pTNeSanflNcc56pq+Zxz7dPPrECQzABQzABQzABQzABQzABQzABQzABQzABQ7Btk1gnOIfQJEbNePWb0xrl4vukFRiCCRiCCRiCCRiCCRiCCRiCCRiCCRiCCRiCbZvEqpnF6Xcmp37nWxp1DcGyUdcu7He9xX5nvZpzTqvhNluBIZiAIZiAIZiAIZiAIZiAIZiAIZiAIZiAIVjLqxPWmHNOq8ao6aI5rzBY1m9aruZxaxw2AWYFhmAChmAChmAChmAChmAChmAChmAChmAChmC3hiMjiVfcG3UWqLLE6bF+Rs2lRZxtywoMwQQMwQQMwQQMwQQMwQQMwQQMwQQMwQQMwVpenfBqZyfqt82JU1xzvoNzvhoN90krMAQTMAQTMAQTMAQTMAQTMAQTMAQTMAQTMAQ77uqE/aaLRj3unGfMqtFvMqlskvNLbTLJ2baswBBMwBBMwBBMwBBMwBBMwBBMwBBMwBBMwBCs5dUJa5xvMmnUVvWbWrvaPFzEtQutwBBMwBBMwBBMwBBMwBDsuN8HZr2aY7aFv/vPf/z7/ufff369+18/f366AXPyNVJJ4kkICh4r3eE///3X7r/ra6ROfISGYAKGYLNcnbBszumimsfdrfBz7O5brvH7z6/yE+p3DcF+EqflnliBIZij0PN6OuZUWEVfj04VDjIX7urx+LNj0RG2HYU+3xj9qAtAf7R4xPj3n1+vH4x3HFvukeWoY7aJPyL5CH1y75qs/B6I8xEwBBMwBBNwPMeZrkzA8fxgfGUChmAtvwceNbA+5z2XNfmC6uC1d9RXbolXgfTLDMBnAp7Ru+NSTY5XOeh1JgKe1GtmXasmlFnoGb35Cerdj1VTDMMyhBUYggkYggkYggkYggkYgm07Cp14fbo5j7vO+Yvmc86lOTZeYAWGYAKGYAKGYAKGYAKGYAKGYAKGYAKGYAKGYLNcWmWUOS8PXeaeWz3uKA07sgJDMAFDMAFDMAFDMAFDMAFDMAFDMAFDMAFDsJaTWDVGnSMqcdaqLPH5ls35OpcdNrNoBYZgAoZgAoZgAoZgAoZgAoZgAoZgAoZgAoZg265OOErNXEu/2aMac559KnHmqUa/Z3TYXmcFhmAChmAChmAChmAChmAChmAChmAChmAChmDHTWLNOSFUY9TjjjqTU9mc71E/kzwjKzAEEzAEEzAEEzAEEzAEEzAEEzAEEzAEEzAE23Z1wqtJPAvUqLN8lc35Ss55JUfnxIKrEDAEEzAEEzAEEzAEEzAEEzAEEzAEEzAE2zaJNcl5gBqqmfI53zUEy0xETcgKDMEEDMEEDMEEDMEEDMEEDMEEDMEEDMEEDMFaXp1wzsmVxMmkmnuec8ZrzteqbM7n+8QKDMEEDMEEDMEEDMEEDMEEDMEEDMEEDMEEDMFaTmKVJU5EzbnN5zszWdmo59vvPWq4x1qBIZiAIZiAIZiAIZiAIZiAIZiAIZiAIZiAIdhxk1isN+cV90ZNJo2axIqYeLMCQzABQzABQzABQzABQzABQzABQzABQzABQzCTWCWJM09lo87yNerqhHNOUzXcc6zAEEzAEEzAEEzAEEzAEEzAEEzAEEzAEEzAEOy4Sax+szj9HHaNuU2P20/NVNOos171e4/mPDPZEyswBBMwBBMwBBMwBBMwBBMwBBMwBBMwBBMwBGs5iTXn+YfmVPNa9ZsuqtFv1mrUFFeNw+YOrcAQTMAQTMAQTMAQTMAQTMAQTMAQTMAQTMAQ7JZ4qirghxUYggkYggkYggkYggkYggkYggkYggkYggkYggkYggkYggkYggkYggkYggkYggkYggl4hNvta/LL0Lxu4fzbfEktr40U4HEXXH8qkn1/a829zeD12b1u4WzbzF9OEfC73avr2YLuD9rvUYY8L6Kc+iP066e++66/qYF9f6tSYdFrux4OeXY0cooV+O6+Cz7u4rfb/+2a+3bTg3fuxX93Ck+qknRjnXQFPs0e+f1thaTgXCvwo+/v0sGYpxgKH0of72fxGE/5/y4+XNnKjXlchD8+aOEGNT/Mr3myNdtWc4PFjVm8cfK/jCddgX+U9++7hj9SvrurfQ+xuGOt2SObPPpHa55s/bZVvqTv/rXdcVdTOu8KvFLhS5R3/zAXbnZfIV//7Wj7U2thw76KCRU+Jmyy+NXampVw07ZtfZTF+7m/8oV7O+Dd6ePUK/Amrz9q7l4264+ZVXrahtf/uHiD3Y/1+udyyTu2bf2jrDlkkNnqIgG/12Rm48iPZzMPSx2zbTvesvCYL/8R+m7xg9buuzrS0+G6p8/wY43dtvujP31Cnvafue1OvQKveZ+e3tfm9R6zs+44snWYgds2z4vQzTVW4MM+WbWdr1w8slKer5xzlx2+bU8v4yQfT1o4b8Bbv2aY501d/Ab7x8dfq3hMZbYjqzNvW6yTfoSeZyGq3JLHT/WFqtd89fp0m1Yv0eJDPx4obrJt5UdZ/Lvrh8nn2Vu2O8UFvstvwOLRi5XfFRW+8l0c6Fm5JWuW/a13tfs25WdX2OaPD12/bfV38vXpXVu8WY6TrsA/1nzbWb7B1vd7606wb39a8z3z1tu8U1gMP95tk22r2fjXm1Xe23xOsQLX+LiwXPz1iTDhgYyjnHoFXu9pTbjefkAoAX99fZ3qqAaXct6vkbYqD9bClC6/Al9j5J2zuvxBLEh2+RUYkgkYggkYggkYgv0PM+IBEgNsAvEAAAAASUVORK5CYII=', '3.08.01.02.016', '9', 'Digital Oscilloscope', 'RIGOL', 'DS1054Z', 2, 2021, 7900000, 'DIPA 2021', 'Baik', 'tersedia', 1, '11/05/2021', '11/05/2024', 'ELAB.UN57.FR.6.04.09', 'ELAB.UN57.FR.6.04.09', 'DS1054Z.jpg', 'DS1000Z_UserGuide_EN.pdf'),
 (13, 'data:image/png;base64,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', '3.08.01.02.016', '10', 'Digital Oscilloscope', 'RIGOL', 'DS1054Z', 2, 2021, 7900000, 'DIPA 2021', 'Baik', 'tersedia', 1, '11/05/2021', '11/05/2024', 'ELAB.UN57.FR.6.04.10', 'ELAB.UN57.FR.6.04.10', 'DS1054Z.jpg', 'DS1000Z_UserGuide_EN.pdf');
 INSERT INTO `tb_inventoryalat` (`id`, `barcode`, `kode`, `register`, `nama_alat`, `merk`, `type`, `kategori`, `tahun`, `harga`, `sumberDana`, `kondisi`, `ketersediaan`, `vendorId`, `tglPenerimaan`, `expWaranty`, `BAPenerimaan`, `BAPelatihan`, `picture`, `IK`) VALUES
-(14, 'data:image/png;base64,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', '3.08.01.99.999', '42', 'Digital Oscilloscope ', 'RIGOL', 'MSO5074', 3, 2020, 32000000, 'DIPA 2020', 'Baik', 'tersedia', 2, '', '', '', '', 'Rigol_OSC.jpg', 'Rigol_MSO5000.pdf'),
+(14, 'data:image/png;base64,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', '3.08.01.99.999', '42', 'Digital Oscilloscope ', 'RIGOL', 'MSO5074', 3, 2020, 32000000, 'DIPA 2020', 'Baik', 'tersedia', 2, '', '', '', '', 'Rigol_OSC.JPG', 'Rigol_MSO5000.pdf'),
 (15, 'data:image/png;base64,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', '3.08.01.42.999', '1', 'Residential Electrical System Training Kit', '-', '-', 2, 2021, 165000000, 'DIPA 2021', 'Baik', 'tersedia', 2, '21/12/2021', '-', 'B/12.21.12/UN57/PL.01.01/2021', 'B/11.21.12/UN57/PL.01.01/2021', '', ''),
 (16, 'data:image/png;base64,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', '3.08.01.42.999', '2', 'Residential Electrical System Training Kit', '-', '-', 2, 2021, 165000000, 'DIPA 2021', 'Baik', 'tersedia', 2, '21/12/2021', '-', 'B/12.21.12/UN57/PL.01.01/2021', 'B/11.21.12/UN57/PL.01.01/2021', '', ''),
 (17, 'data:image/png;base64,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', '3.08.01.42.999', '3', 'Residential Electrical System Training Kit', '-', '-', 2, 2021, 165000000, 'DIPA 2021', 'Baik', 'tersedia', 2, '21/12/2021', '-', 'B/12.21.12/UN57/PL.01.01/2021', 'B/11.21.12/UN57/PL.01.01/2021', '', ''),
@@ -9482,7 +9556,7 @@ INSERT INTO `tb_inventoryalat` (`id`, `barcode`, `kode`, `register`, `nama_alat`
 (48, '', 'ELAB.UN57.K2', '28', 'Analog RF Signal Generator', 'Aditeg', 'RG_450', 2, 0, 0, '', 'Baik', 'tersedia', 0, '', '', '', '', 'RG450.jpg', 'Aditeg_RG450.pdf'),
 (49, '', 'ELAB.UN57.K2', '29', 'Analog RF Signal Generator', 'Aditeg', 'RG_450', 2, 0, 0, '', 'Baik', 'tersedia', 0, '', '', '', '', 'RG450.jpg', 'Aditeg_RG450.pdf'),
 (50, '', 'ELAB.UN57.K2', '30', 'Analog RF Signal Generator', 'Aditeg', 'RG_450', 2, 0, 0, '', 'Baik', 'tersedia', 0, '', '', '', '', 'RG450.jpg', 'Aditeg_RG450.pdf'),
-(51, '', 'ELAB.UN57.K2', '31', 'Termocouple Temperature Calibrator', 'Chauvin Arnoux', 'CA1621', 2, 2016, 0, '', 'Baik', 'tersedia', 0, '', '', '', '', 'CA1621.JPG', 'CA1621_manual.pdf'),
+(51, '', 'ELAB.UN57.K2', '31', 'Termocouple Temperature Calibrator', 'Chauvin Arnoux', 'CA1621', 2, 2016, 0, '', 'Baik', 'tersedia', 0, '', '', '', '', 'CA1621.jpg', 'CA1621_manual.pdf'),
 (52, '', 'ELAB.UN57.K2', '32', 'Digital Logic Trainer', 'Didalab', 'EDD120 000', 2, 2016, 0, '', 'Baik', 'tersedia', 0, '', '', '', '', 'EDD120.JPG', 'EDD120_000.pdf'),
 (53, '', 'ELAB.UN57.K2', '33', 'Digital Logic Trainer', 'Didalab', 'EDD120 000', 2, 2016, 0, '', 'Baik', 'tersedia', 0, '', '', '', '', 'EDD120.JPG', 'EDD120_000.pdf'),
 (54, '', 'ELAB.UN57.K2', '34', 'Basic Logic Trainer', 'Didalab', 'EDD100 000', 2, 2016, 0, '', 'Baik', 'tersedia', 0, '', '', '', '', 'EDD100.JPG', 'EDD100_000.pdf'),
@@ -10724,14 +10798,6 @@ CREATE TABLE `tb_user_submenu` (
   `is_active` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tb_user_submenu`
---
-
-INSERT INTO `tb_user_submenu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
-(51, 27, 'Groups', '', '', 1),
-(52, 27, 'Users', '', '', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -11706,15 +11772,15 @@ INSERT INTO `tb_vendor` (`id`, `nama`, `alamat`, `contact`) VALUES
 
 CREATE TABLE `users` (
   `id` int UNSIGNED NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `username` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `password_hash` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `reset_hash` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `password_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `reset_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `reset_at` datetime DEFAULT NULL,
   `reset_expires` datetime DEFAULT NULL,
-  `activate_hash` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `status` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `status_message` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `activate_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `status_message` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `force_pass_reset` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
@@ -11727,7 +11793,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'dwi.kurniawan@untidar.ac.id', 'kurniawan', '$2y$10$0VBk4uDqKEvzLegwu9WMEebl6ON.bBzlhxeRMtzzGfH9kSvludisK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2025-07-07 00:56:18', '2025-07-07 00:56:18', NULL);
+(1, 'dwi.kurniawan@untidar.ac.id', 'kurniawan', '$2y$10$0VBk4uDqKEvzLegwu9WMEebl6ON.bBzlhxeRMtzzGfH9kSvludisK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2025-07-07 00:56:18', '2025-07-07 00:56:18', NULL),
+(2, 'elab@untidar.ac.id', 'elab', '$2y$10$04KQJoEOUX.ZxCQEDRS5P.OC7JfS.ubXoR..XBHI1g9akiF7Sa5Nm', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2025-07-21 22:19:44', '2025-07-21 22:19:44', NULL);
 
 --
 -- Indexes for dumped tables
@@ -11793,6 +11860,14 @@ ALTER TABLE `auth_tokens`
 ALTER TABLE `auth_users_permissions`
   ADD KEY `auth_users_permissions_permission_id_foreign` (`permission_id`),
   ADD KEY `user_id_permission_id` (`user_id`,`permission_id`);
+
+--
+-- Indexes for table `menus`
+--
+ALTER TABLE `menus`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_parent_id` (`parent_id`),
+  ADD KEY `permission_id` (`permission_id`);
 
 --
 -- Indexes for table `migrations`
@@ -11971,7 +12046,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
@@ -11990,6 +12065,12 @@ ALTER TABLE `auth_reset_attempts`
 --
 ALTER TABLE `auth_tokens`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `menus`
+--
+ALTER TABLE `menus`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -12139,7 +12220,7 @@ ALTER TABLE `tb_vendor`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -12171,6 +12252,13 @@ ALTER TABLE `auth_tokens`
 ALTER TABLE `auth_users_permissions`
   ADD CONSTRAINT `auth_users_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `menus`
+--
+ALTER TABLE `menus`
+  ADD CONSTRAINT `fk_parent_id` FOREIGN KEY (`parent_id`) REFERENCES `menus` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `menus_ibfk_1` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_user_menu`
