@@ -25,7 +25,7 @@ class Bahan extends BaseController
             ->get()
             ->getResultArray();
         $data['title'] = 'bahan';
-        $data['menu'] = $this->menu;  
+        $data['sidebarMenus'] = $this->sidebarMenus;
         return view('bahan/index', $data);
     }
 
@@ -35,7 +35,7 @@ class Bahan extends BaseController
             ->getWhere(['nama_bahan'=>$namabahan])
             ->getResultArray();
         $data['title'] = 'bahan';
-        $data['menu'] = $this->menu;  
+        $data['sidebarMenus'] = $this->sidebarMenus;
         return view('bahan/detail', $data);
         
     }

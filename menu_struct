@@ -69,3 +69,8 @@ $menu->insert([
             'permission_id' => 2, // Assuming permission_id 1 is for Super Admin
         ]);
 
+
+<?= url_is($mainMenu['url']) ? 'active' : '' ?>
+<?= url_is(str_replace('#', '', $mainMenu['url']) . '*') ? 'active' : '' ?>
+<?= url_is($subMenu['url']) ? 'active' : '' ?>
+<?= url_is(str_replace('#', '', $mainMenu['url']) . '*') ? 'show' : '' ?>

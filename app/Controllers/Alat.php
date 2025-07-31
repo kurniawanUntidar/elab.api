@@ -26,7 +26,7 @@ class Alat extends BaseController
             ->get()
             ->getResultArray();
         $data['title'] = 'Alat';
-        $data['menu'] = $this->menu;  
+        $data['sidebarMenus'] = $this->sidebarMenus;
         return view('alat/index', $data);
     }
 
@@ -36,7 +36,7 @@ class Alat extends BaseController
             ->getWhere(['nama_alat'=>$namaAlat])
             ->getResultArray();
         $data['title'] = 'Alat';
-        $data['menu'] = $this->menu;  
+        $data['sidebarMenus'] = $this->sidebarMenus; 
         return view('alat/detail', $data);
         
     }

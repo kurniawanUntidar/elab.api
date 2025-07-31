@@ -10,7 +10,8 @@
             <hr class="sidebar-divider">
 
          
-    <?php if (logged_in()): ?>
+        <?php if (logged_in()): ?> 
+        <?php //if (user()): ?>
         <?php
         // Dapatkan data menu dari controller (melalui view data)
         // Pastikan Anda meneruskan variabel $sidebarMenus dari controller ke view layout utama.
@@ -24,23 +25,23 @@
         foreach ($menus as $mainMenu): ?>
             <?php if (empty($mainMenu['sub_menus'])): ?>
                 <li class="nav-item <?= url_is($mainMenu['url']) ? 'active' : '' ?>">
-                    <a class="nav-link" href="<?= base_url($mainMenu['url']) ?>">
+                    <a class="nav-link collapsed" href="<?= base_url($mainMenu['url']) ?>">
                         <i class="<?= esc($mainMenu['icon']) ?>"></i>
                         <span><?= esc($mainMenu['title']) ?></span>
                     </a>
                 </li>
             <?php else: ?>
-                <li class="nav-item <?= url_is(str_replace('#', '', $mainMenu['url']) . '*') ? 'active' : '' ?>">
+                <li class="nav-item <?= url_is($mainMenu['url']) ? 'active' : '' ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse<?= esc($mainMenu['id']) ?>"
                         aria-expanded="true" aria-controls="collapse<?= esc($mainMenu['id']) ?>">
                         <i class="<?= esc($mainMenu['icon']) ?>"></i>
                         <span><?= esc($mainMenu['title']) ?></span>
                     </a>
-                    <div id="collapse<?= esc($mainMenu['id']) ?>" class="collapse <?= url_is(str_replace('#', '', $mainMenu['url']) . '*') ? 'show' : '' ?>" aria-labelledby="heading<?= esc($mainMenu['id']) ?>" data-parent="#accordionSidebar">
+                    <div id="collapse<?= esc($mainMenu['id']) ?>" class="collapse" aria-labelledby="heading<?= esc($mainMenu['id']) ?>" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header"><?= esc($mainMenu['title']) ?>:</h6>
                             <?php foreach ($mainMenu['sub_menus'] as $subMenu): ?>
-                                <a class="collapse-item <?= url_is($subMenu['url']) ? 'active' : '' ?>" href="<?= base_url($subMenu['url']) ?>">
+                                <a class="collapse-item" href="<?= base_url($subMenu['url']) ?>">
                                     <?= esc($subMenu['title']) ?>
                                 </a>
                             <?php endforeach; ?>
@@ -52,27 +53,6 @@
         <?php endforeach; ?>
 
         <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Nav Item - Utilities Collapse Menu
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li> -->
-
-
             <!-- Divider -->
 
             <?php if(user()):
@@ -89,8 +69,8 @@
                 $icon = "fas fa-sign-in-alt";
             endif; ?>
 
-            <li class="nav-item">
-                <a class="nav-link btn bg-gradient-secondary btn-block"  type="button"
+            <li class="nav-item active">
+                <a class="nav-link btn bg-gradient-secondary btn-block "  type="button"
                         href="<?= $link ?>" 
                         data-toggle=<?=$dataTogle?> 
                         data-target=<?=$dataTarget?>>
