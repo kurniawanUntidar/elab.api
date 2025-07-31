@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 28, 2025 at 12:33 AM
--- Server version: 8.4.5-cluster
+-- Generation Time: Jul 31, 2025 at 04:22 AM
+-- Server version: 8.4.5
 -- PHP Version: 8.2.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -176,7 +176,9 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (55, '127.0.0.1', 'elab@untidar.ac.id', 2, '2025-07-26 16:31:57', 1),
 (56, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-26 16:43:12', 1),
 (57, '127.0.0.1', 'elab@untidar.ac.id', 2, '2025-07-26 16:43:46', 1),
-(58, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-27 07:15:24', 1);
+(58, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-27 07:15:24', 1),
+(59, '127.0.0.1', 'dwi.kurniawan@untidar.ac.id', 1, '2025-07-31 02:09:12', 1),
+(60, '127.0.0.1', 'elab@untidar.ac.id', 2, '2025-07-31 02:34:15', 1);
 
 -- --------------------------------------------------------
 
@@ -271,28 +273,28 @@ INSERT INTO `menus` (`id`, `parent_id`, `title`, `url`, `icon`, `order_position`
 (4, NULL, 'Dokument Mutu', '#', 'fas fa-fw fa-book', 30, 4, 1, NULL, NULL),
 (5, NULL, 'Pengelolaan Lab.', '#', 'fas fa-fw fa-toolbox', 40, 3, 1, NULL, NULL),
 (6, NULL, 'Profile', '#', 'fas fa-fw fa-address-card', 50, 2, 1, NULL, NULL),
-(7, NULL, 'Permohonan', '#', NULL, 60, 2, 1, NULL, NULL),
-(8, 2, 'Groups', 'admin/groups', 'fas fa-fw fa-people-group', 11, 1, 1, NULL, NULL),
-(9, 2, 'Users', 'admin/users', 'fas fa-fw fa-users', 12, 1, 1, NULL, NULL),
-(10, 2, 'Role', 'admin/role', NULL, 13, 1, 1, NULL, NULL),
+(7, NULL, 'Permohonan', '#', 'fas fa-fw fa-paper-plane', 60, 2, 1, NULL, NULL),
+(8, 2, 'Groups', 'admin/groups', 'fas fa-fw fa-users', 11, 1, 1, NULL, NULL),
+(9, 2, 'Users', 'admin/users', 'fas fa-fw fa-user', 12, 1, 1, NULL, NULL),
+(10, 2, 'Role', 'admin/role', 'fas fa-fw fa-user-check', 13, 1, 1, NULL, NULL),
 (11, 2, 'Permissions', 'admin/permissions', NULL, 14, 1, 1, NULL, NULL),
 (12, 2, 'Menu', 'admin/menu', NULL, 15, 1, 1, NULL, NULL),
 (13, 2, 'Submenu', 'admin/submenu', NULL, 16, 1, 1, NULL, NULL),
-(14, 3, 'Alat', 'alat', NULL, 21, 5, 1, NULL, NULL),
-(15, 3, 'Bahan', 'bahan', NULL, 22, 5, 1, NULL, NULL),
-(16, 3, 'Fasilitas', 'fasilitas', NULL, 23, 5, 1, NULL, NULL),
+(14, 3, 'Alat', 'alat', 'fas fa-fw fa-microscope', 21, 5, 1, NULL, NULL),
+(15, 3, 'Bahan', 'bahan', 'fas fa-fw fa-microchip', 22, 5, 1, NULL, NULL),
+(16, 3, 'Fasilitas', 'fasilitas', 'fas fa-fw fa-warehouse', 23, 5, 1, NULL, NULL),
 (17, 4, 'Level 1', 'document/level1', 'fas fa-fw fa-file', 31, 4, 1, NULL, NULL),
 (18, 4, 'Level 2', 'document/level2', 'fas fa-fw fa-file', 32, 4, 1, NULL, NULL),
 (19, 4, 'Level 3', 'document/level3', 'fas fa-fw fa-file', 33, 4, 1, NULL, NULL),
 (20, 4, 'Level 4', 'document/level4', 'fas fa-fw fa-file', 34, 4, 1, NULL, NULL),
-(21, 5, 'Penggunaan', 'alat/penggunaan', NULL, 41, 3, 1, NULL, NULL),
-(22, 5, 'Perawatan', 'alat/perawatan', NULL, 42, 3, 1, NULL, NULL),
-(23, 5, 'Evaluasi dan Kalibrasi', 'alat/evaluasi', NULL, 43, 3, 1, NULL, NULL),
-(24, 5, 'Cetak QR', 'alat/qr', NULL, 44, 3, 1, NULL, NULL),
+(21, 5, 'Penggunaan', 'alat/penggunaan', 'fas fa-fw fa-hand-holding-water', 41, 3, 1, NULL, NULL),
+(22, 5, 'Perawatan', 'alat/perawatan', 'fas fa-fw fa-hand-holding-medical', 42, 3, 1, NULL, NULL),
+(23, 5, 'Evaluasi dan Kalibrasi', 'alat/evaluasi', 'fas fa-fw fa-hand-holding-heart', 43, 3, 1, NULL, NULL),
+(24, 5, 'Cetak QR', 'alat/qr', 'fas fa-fw fa-qrcode', 44, 3, 1, NULL, NULL),
 (25, 6, 'My Profile', 'user/profile', NULL, 51, 2, 1, NULL, NULL),
 (26, 6, 'Edit Profile', 'user/edit', NULL, 52, 2, 1, NULL, NULL),
 (27, 6, 'Change Password', 'user/changepassword', NULL, 53, 2, 1, NULL, NULL),
-(28, 7, 'Keterangan Bebas Laboratorium', 'permohonan/bebaslab', NULL, 61, 2, 1, NULL, NULL),
+(28, 7, 'Keterangan Bebas Lab.', 'permohonan/bebaslab', NULL, 61, 2, 1, NULL, NULL),
 (29, 7, 'Peminjaman Alat', 'permohonan/pinjamalat', NULL, 62, 2, 1, NULL, NULL),
 (30, 7, 'Pengadaan Alat', 'permohonan/pengadaanalat', NULL, 63, 5, 1, NULL, NULL),
 (31, 7, 'Pengadaan Bahan', 'permohonan/pengadaanbahan', NULL, 64, 5, 1, NULL, NULL);
@@ -12046,7 +12048,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`

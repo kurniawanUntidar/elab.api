@@ -108,6 +108,7 @@
         $(document).ready(function () {
             // Initialize the carousel
             $('#dataAlat').DataTable();
+            $('#dataBahan').DataTable();
         });
     </script>
 

@@ -42,7 +42,8 @@
                             <h6 class="collapse-header"><?= esc($mainMenu['title']) ?>:</h6>
                             <?php foreach ($mainMenu['sub_menus'] as $subMenu): ?>
                                 <a class="collapse-item" href="<?= base_url($subMenu['url']) ?>">
-                                    <?= esc($subMenu['title']) ?>
+                                    <i class="<?= esc($subMenu['icon']) ?>"></i>
+                                    <span><?= esc($subMenu['title']) ?></span>
                                 </a>
                             <?php endforeach; ?>
                         </div>
