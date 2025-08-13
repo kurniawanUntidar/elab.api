@@ -11,6 +11,7 @@ $routes->get('/dashboard', 'Users::index');
 $routes->get('/alat', 'Alat::index');
 $routes->get('/alat/(:segment)', 'Alat::detail/$1');
 $routes->get('/bahan', 'Bahan::index');
+$routes->get('/user/(:segment)', 'Users::$1');
 
 
 $routes->group('', ['namespace' => 'App\Controllers'], static function ($routes) {
