@@ -37,6 +37,7 @@ class ComposerStaticInit2863eb527fd313d534b97c8fb39d6c8a
         ),
         'F' => 
         array (
+            'Firebase\\JWT\\' => 13,
             'Faker\\' => 6,
         ),
         'D' => 
@@ -83,6 +84,10 @@ class ComposerStaticInit2863eb527fd313d534b97c8fb39d6c8a
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-escaper/src',
         ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
@@ -118,6 +123,7 @@ class ComposerStaticInit2863eb527fd313d534b97c8fb39d6c8a
     public static $classMap = array (
         'App\\Controllers\\Alat' => __DIR__ . '/../..' . '/app/Controllers/Alat.php',
         'App\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Controllers/AuthController.php',
+        'App\\Controllers\\Bahan' => __DIR__ . '/../..' . '/app/Controllers/Bahan.php',
         'App\\Controllers\\BaseController' => __DIR__ . '/../..' . '/app/Controllers/BaseController.php',
         'App\\Controllers\\Home' => __DIR__ . '/../..' . '/app/Controllers/Home.php',
         'App\\Controllers\\Users' => __DIR__ . '/../..' . '/app/Controllers/Users.php',
@@ -130,6 +136,7 @@ class ComposerStaticInit2863eb527fd313d534b97c8fb39d6c8a
         'App\\Filters\\LoginFilter' => __DIR__ . '/../..' . '/app/Filters/LoginFilter.php',
         'App\\Filters\\PermissionFilter' => __DIR__ . '/../..' . '/app/Filters/PermissionFilter.php',
         'App\\Filters\\RoleFilter' => __DIR__ . '/../..' . '/app/Filters/RoleFilter.php',
+        'App\\Models\\Alat' => __DIR__ . '/../..' . '/app/Models/Alat.php',
         'App\\Models\\InfoModel' => __DIR__ . '/../..' . '/app/Models/InfoModel.php',
         'App\\Models\\LoginModel' => __DIR__ . '/../..' . '/app/Models/LoginModel.php',
         'App\\Models\\MenuModel' => __DIR__ . '/../..' . '/app/Models/MenuModel.php',
@@ -1109,6 +1116,14 @@ class ComposerStaticInit2863eb527fd313d534b97c8fb39d6c8a
         'Faker\\Provider\\zh_TW\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/zh_TW/Text.php',
         'Faker\\UniqueGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/UniqueGenerator.php',
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/ValidGenerator.php',
+        'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',
+        'Firebase\\JWT\\CachedKeySet' => __DIR__ . '/..' . '/firebase/php-jwt/src/CachedKeySet.php',
+        'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
+        'Firebase\\JWT\\JWK' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWK.php',
+        'Firebase\\JWT\\JWT' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWT.php',
+        'Firebase\\JWT\\JWTExceptionWithPayloadInterface' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWTExceptionWithPayloadInterface.php',
+        'Firebase\\JWT\\Key' => __DIR__ . '/..' . '/firebase/php-jwt/src/Key.php',
+        'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
         'Laminas\\Escaper\\Escaper' => __DIR__ . '/..' . '/laminas/laminas-escaper/src/Escaper.php',
         'Laminas\\Escaper\\EscaperInterface' => __DIR__ . '/..' . '/laminas/laminas-escaper/src/EscaperInterface.php',
         'Laminas\\Escaper\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/laminas/laminas-escaper/src/Exception/ExceptionInterface.php',
