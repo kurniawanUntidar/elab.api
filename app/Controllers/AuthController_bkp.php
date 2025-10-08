@@ -8,7 +8,7 @@ use App\Cofig\Auth as AuthConfig;
 use App\Entities\User;
 use App\Models\UserModel;
 
-class AuthControllerBkp extends Controller
+class AuthController extends Controller
 {
     protected $auth;
 
@@ -50,11 +50,28 @@ class AuthControllerBkp extends Controller
             $redirectURL = session('redirect_url') ?? site_url('/');
             unset($_SESSION['redirect_url']);
 
+            // Jika request API, balas JSON
+        if ($this->request->isAJAX() || $this->request->getHeaderLine('Accept') === 'application/json') {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Already logged in',
+                'redirect' => $redirectURL,
+            ]);
+        }
+
             return redirect()->to($redirectURL);
         }
 
         // Set a return URL if none is specified
         $_SESSION['redirect_url'] = session('redirect_url') ?? previous_url() ?? site_url('/');
+
+        // Jika request API, balas JSON
+        if ($this->request->isAJAX() || $this->request->getHeaderLine('Accept') === 'application/json') {
+        return $this->response->setJSON([
+            'status' => 'info',
+            'message' => 'Please login',
+        ]);
+    }
 
         return $this->_render($this->config->views['login'], ['config' => $this->config]);
     }
@@ -74,6 +91,10 @@ class AuthControllerBkp extends Controller
         }
 
         if (! $this->validate($rules)) {
+            if ($this->request->isAJAX() || $this->request->getHeaderLine('Accept') === 'application/json') {
+            return $this->response->setStatusCode(400)
+                ->setJSON(['status' => 'error', 'errors' => $this->validator->getErrors()]);
+        }
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
@@ -86,11 +107,23 @@ class AuthControllerBkp extends Controller
 
         // Try to log them in...
         if (! $this->auth->attempt([$type => $login, 'password' => $password], $remember)) {
+            if ($this->request->isAJAX() || $this->request->getHeaderLine('Accept') === 'application/json') {
+            return $this->response->setStatusCode(401)
+                ->setJSON(['status' => 'error', 'message' => $this->auth->error() ?? lang('Auth.badAttempt')]);
+        }
             return redirect()->back()->withInput()->with('error', $this->auth->error() ?? lang('Auth.badAttempt'));
         }
 
         // Is the user being forced to reset their password?
         if ($this->auth->user()->force_pass_reset === true) {
+             if ($this->request->isAJAX() || $this->request->getHeaderLine('Accept') === 'application/json') {
+            return $this->response->setStatusCode(403)
+                ->setJSON([
+                    'status' => 'error',
+                    'message' => 'Password reset required',
+                    'reset_token' => $this->auth->user()->reset_hash
+                ]);
+        }
             return redirect()->to(route_to('reset-password') . '?token=' . $this->auth->user()->reset_hash)->withCookies();
         }
                 //$redirectURL = '/dashboard';
@@ -99,6 +132,14 @@ class AuthControllerBkp extends Controller
 
         unset($_SESSION['redirect_url']);
        // dd($redirectURL);
+        if ($this->request->isAJAX() || $this->request->getHeaderLine('Accept') === 'application/json') {
+        return $this->response->setJSON([
+            'status' => 'success',
+            'message' => lang('Auth.loginSuccess'),
+            'user' => $this->auth->user(),
+            'redirect' => $redirectURL,
+        ]);
+    }
 
         return redirect()->to($redirectURL)->withCookies()->with('message', lang('Auth.loginSuccess'));
         // return redirect()->to($redirectURL)->with('message', lang('Auth.loginSuccess'));
