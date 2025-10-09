@@ -5,7 +5,7 @@ namespace App\Controllers\Api;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\UsersModel;
+use App\Models\UserModel;
 
 class Users extends ResourceController
 {
@@ -16,7 +16,7 @@ class Users extends ResourceController
      */
     use ResponseTrait;
     public function __construct(){
-        $this->model = new UsersModel();
+        $this->model = new UserModel();
     }
 
     public function index()
