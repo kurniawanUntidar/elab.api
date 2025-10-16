@@ -41,6 +41,7 @@ $routes->group('', ['namespace' => 'App\Controllers'], static function ($routes)
 
 $routes->group('api', ['namespace' => 'App\Controllers\Api'],function ($routes) {
     $routes -> post('auth','Auth::index');
+    $routes -> get('/', 'Home::index');
    // $routes -> resource('auth',['controller'=>'Auth']);
     $routes -> resource('users', ['controller' => 'Users','filter' => 'auth']);
     $routes -> resource('alat', ['controller' => 'Alat']);
