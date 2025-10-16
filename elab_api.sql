@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 09, 2025 at 10:54 PM
+-- Generation Time: Oct 16, 2025 at 03:36 AM
 -- Server version: 8.4.6-cluster
 -- PHP Version: 8.2.29
 
@@ -224,7 +224,18 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (105, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-09 22:23:23', 1),
 (106, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-09 22:24:46', 1),
 (107, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-09 22:25:34', 1),
-(108, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-09 22:48:46', 1);
+(108, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-09 22:48:46', 1),
+(109, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-09 22:59:37', 1),
+(110, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-09 23:04:57', 1),
+(111, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-09 23:06:51', 1),
+(112, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-15 12:26:11', 1),
+(113, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-15 12:39:16', 1),
+(114, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-15 12:39:18', 1),
+(115, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-15 12:40:06', 1),
+(116, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-15 12:55:37', 1),
+(117, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-15 12:56:54', 1),
+(118, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-15 12:58:26', 1),
+(119, '127.0.0.1', 'dwi.citratechindo@gmail.com', 1025, '2025-10-15 12:59:38', 1);
 
 -- --------------------------------------------------------
 
@@ -12461,7 +12472,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`
