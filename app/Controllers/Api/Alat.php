@@ -6,6 +6,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\AlatModel;
+use CodeIgniter\Database\RawSql;
 
 class Alat extends ResourceController
 {
@@ -14,17 +15,29 @@ class Alat extends ResourceController
      *
      * @return ResponseInterface
      */
+    
+
+    protected $db;
+    protected $builder;
+
     use ResponseTrait;
 
     public function __construct()
     {
-        $this->model = new AlatModel();
+        // $this->model = new AlatModel();
+        $this->db      = \Config\Database::connect();
+        $this->builder = $this->db->table('tb_inventoryalat');
     }   
 
     public function index()
     {
-        $data = $this->model->findAll();
-        return $this->respond($data);
+        $data['alat'] = $this->builder->select('nama_alat, merk, type, picture, kategori, IK')
+            ->select(new RawSql('COUNT(*) AS jumlah'))  
+            ->groupBy(['nama_alat', 'merk', 'type', 'picture', 'kategori', 'IK'])
+            ->get()
+            ->getResultArray();
+        // $data = $this->model->findAll();
+        return $this->respond($data['alat']);
     }
 
     /**
