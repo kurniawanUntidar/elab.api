@@ -47,11 +47,12 @@ class Alat extends ResourceController
      *
      * @return ResponseInterface
      */
-    public function show($id = null)
+    public function show($namaAlat = null)
     {
-        $data = $this->model->find($id);
-        if($data) return $this->respond($data);
-        return $this->failNotFound('Item not found');
+        $data['alat'] = $this->builder->select('id,kode, register,nama_alat, merk, type, kategori, kondisi, ketersediaan, IK')
+            ->getWhere(['nama_alat'=>$namaAlat])
+            ->getResultArray();
+        return $this->respond($data['alat']);
     }
 
     /**
