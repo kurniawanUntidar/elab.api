@@ -5,7 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
-use app\Models\UserModel;
+use App\Models\UserModel;
 
 class Register extends ResourceController
 {
@@ -35,6 +35,8 @@ class Register extends ResourceController
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
             'name' => $this->request->getVar('name'),
             'role' => $this->request->getVar('role'),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ];
 
         $userModel = new UserModel();
@@ -42,9 +44,8 @@ class Register extends ResourceController
 
         if (!$registered) {
             return $this->fail('Failed to register user');
-        }    
-        
+        }
+
         $this->respondCreated($registered);
     }
-
 }

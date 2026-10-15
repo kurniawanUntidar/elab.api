@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 15, 2026 at 04:00 PM
--- Server version: 11.8.6-MariaDB-0+deb13u1 from Debian
+-- Generation Time: Oct 15, 2026 at 04:51 PM
+-- Server version: 8.4.6-cluster
 -- PHP Version: 8.4.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,14 +28,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `users` (
-  `id` int(5) NOT NULL,
+  `id` int NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `role` int(5) NOT NULL,
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+  `role` int NOT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `name`, `role`, `created_at`, `updated_at`) VALUES
+(2, 'dwi.kurniawan@untidar.ac.id', '$2y$12$JD4c/5Wz9voxrO2ZvzS78udMLTIMItumQgLAO0mYuJTUoPQZlGzjC', 'kurniawan', 1, '2026-10-15', '2026-10-15');
 
 --
 -- Indexes for dumped tables
@@ -55,7 +62,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
