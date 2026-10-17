@@ -31,10 +31,10 @@ class Login extends ResourceController
         $model = new UserModel();
         $user = $model->where('email', $this->request->getVar('email'))->first();
         if (!$user) {
-            return $this->failNotFound($this->request->getVar('email').' not found');
+            return $this->failNotFound($this->request->getVar('email') . ' not found');
         }
         $verified = password_verify($this->request->getVar('password'), $user['password']);
-        if(!$verified) {
+        if (!$verified) {
             return $this->fail('Incorrect password');
         }
 
@@ -44,11 +44,11 @@ class Login extends ResourceController
             'nbf' => 1357000000,
             'user_id' => $user['id'],
             'email' => $user['email'],
-            ];
+        ];
 
         $token = JWT::encode($payload, $key, 'HS256');
-        return $this->respond(['message' => 'Login successful', 'user' => $user, 'token' => $token ]);
+        return $this->respond(['message' => 'Login successful', 'token' => $token]);
 
         //
     }
-   }
+}
