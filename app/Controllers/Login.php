@@ -6,6 +6,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\UserModel;
+use Firebase\JWT\JWT;
 
 class Login extends ResourceController
 {
@@ -36,7 +37,17 @@ class Login extends ResourceController
         if(!$verified) {
             return $this->fail('Incorrect password');
         }
-        return $this->respond(['message' => 'Login successful', 'user' => $user]);
+
+        $key = getenv('ELAB_KEY');
+        $payload = [
+            'iat' => 1356999524,
+            'nbf' => 1357000000,
+            'user_id' => $user['id'],
+            'email' => $user['email'],
+            ];
+
+        $token = JWT::encode($payload, $key, 'HS256');
+        return $this->respond(['message' => 'Login successful', 'user' => $user, 'token' => $token ]);
 
         //
     }
