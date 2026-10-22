@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\API\ResponseTrait;
+use App\Models\NewsModel;
 
 class Home extends ResourceController
 {
@@ -12,9 +14,13 @@ class Home extends ResourceController
      *
      * @return ResponseInterface
      */
+    use ResponseTrait;
     public function index()
     {
         //
+        $model = new NewsModel();
+        $news = $model->where('is_active', 1)->orderBy('created_at', 'DESC')->findAll();
+        return $this->respond(['news' => $news]);
     }
 
     /**
